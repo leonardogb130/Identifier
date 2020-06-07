@@ -2,9 +2,10 @@
 # For more languages and info see:
 # https://github.com/rsp/travis-hello#readme
 
-GCCFLAGS = -g -Wall -Wfatal-errors -std=c++14
+GCCFLAGS = -g -Wall -Wfatal-errors 
 
 ALL = identifier
+GCC = gcc
 
 all: $(ALL)
 
@@ -12,7 +13,7 @@ hello: identifier.c
 	$(GCC) $(GCCFLAGS) -o $@ $@.c
 	
 cov: identifier.c
-	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o $@_cov $@.c
+	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o $@ identifier.c
 
 clean:
 	$(RM) $(ALL) *.o
