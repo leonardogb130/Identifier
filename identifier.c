@@ -26,7 +26,7 @@ int valid_f(char ch)
 }
 
 
-main()
+int main()
 {
 	char achar;
 	int lenght, valid_id;
@@ -52,9 +52,11 @@ main()
 	if(valid_id && (lenght >= 1) && (lenght < 6))
 	{
 		printf("Valido\n");
+		return 0;
 	}
 	else
 	{
 		printf("Invalido\n");
+		return 1;
 	}
 }
