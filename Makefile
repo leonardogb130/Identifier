@@ -8,7 +8,7 @@ ALL = identifier
 
 all: $(ALL)
 
-hello: src/identifier.c
+hello: identifier.c
 	$(GCC) $(GCCFLAGS) -o $@ $@.c
 
 clean:
