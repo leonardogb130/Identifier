@@ -10,6 +10,9 @@ all: $(ALL)
 
 hello: identifier.c
 	$(GCC) $(GCCFLAGS) -o $@ $@.c
+	
+cov: identifier.c
+	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o $@_cov $@.c
 
 clean:
 	$(RM) $(ALL) *.o
