@@ -3,7 +3,7 @@
 # https://github.com/rsp/travis-hello#readme
 
 sudo: false
-language: cpp
+language: c
 compiler:
   - gcc
 addons:
@@ -11,7 +11,7 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - g++-6
+    - gcc
     - valgrind
 before_install:
   # download riscv32 compiler
@@ -20,11 +20,11 @@ before_install:
   - tar xvzf riscv-gcc.tar.gz --strip-components 2
   - export PATH=$PWD/riscv-elf/gcc-8.1.0/bin:$PATH
 install:
-- "[ $CXX = g++ ] && export CXX=g++-6 || true"
+- "[ $GCC = gcc ] && export GCC=gcc || true"
 script:
   - riscv32-unknown-elf-gcc
   - make
   - make test
-  - valgrind ./hello
-  - gprof ./hello > gprof.log
+  - valgrind ./identifier
+  - gprof ./identifier > gprof.log
   - head gprof.log -n 200

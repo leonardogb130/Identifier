@@ -2,14 +2,14 @@
 # For more languages and info see:
 # https://github.com/rsp/travis-hello#readme
 
-CXXFLAGS = -g -Wall -Wfatal-errors -std=c++14
+GCCFLAGS = -g -Wall -Wfatal-errors -std=c++14
 
-ALL = hello
+ALL = identifier
 
 all: $(ALL)
 
-hello: hello.cpp Makefile
-	$(CXX) $(CXXFLAGS) -pg -o $@ $@.cpp
+hello: src/identifier.c
+	$(GCC) $(GCCFLAGS) -o $@ $@.c
 
 clean:
 	$(RM) $(ALL) *.o
