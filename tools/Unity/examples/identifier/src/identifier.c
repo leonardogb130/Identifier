@@ -1,8 +1,5 @@
 #include <stdio.h>
-<<<<<<< HEAD:tools/Unity/examples/identifier/src/identifier.c
 #include <identifier.h>
-main()
-=======
 
 
 int valid_s(char ch)
@@ -29,9 +26,7 @@ int valid_f(char ch)
 	}
 }
 
-
-int main()
->>>>>>> b736a3f5ed1bb882ad492c64c069d5c9cd5fe431:identifier.c
+int main(void)
 {
 	char achar;
 	int lenght, valid_id;
@@ -57,36 +52,9 @@ int main()
 	if(valid_id && (lenght >= 1) && (lenght < 6))
 	{
 		printf("Valido\n");
-		return 0;
 	}
 	else
 	{
 		printf("Invalido\n");
-		return 1;
 	}
 }
-
-int valid_s(char ch)
-{
-	if(((ch >= 'A') && (ch <= 'Z')) || ((ch >= 'a') && (ch <='z')))
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-
-int valid_f(char ch)
-{
-	if(((ch >= 'A') && (ch <= 'Z')) || ((ch >= 'a') && (ch <='z')) || ((ch >='0') && (ch <= '9')))
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-
