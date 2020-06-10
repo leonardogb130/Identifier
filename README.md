@@ -27,13 +27,41 @@ https://github.com/leonardogb130/Identifier/issues/1#issue-635937268
  - Após, executar o comando 'make' em um terminal e será exibido a lista dos testes realizados. 
  
  ![resultados](https://user-images.githubusercontent.com/42787996/84230619-c729bc80-aac2-11ea-8458-20dc271c13c8.PNG)
+ 
 
+## Descrição dos testes
 
+O primeiro teste testa um caractere dentro do range limite de 1-6, sem caracteres especiais e começando com letra.
 
+test_identifier1:  [A,Válido]
 
+O segundo teste testa uma cadeia de caracteres dentro do range limite de 1-6, sem caracteres especiais e começando com letra.
 
+test_identifier2:  [D423rf,Válido]
 
+O terceiro teste testa um caracter nulo, de tamanho 0
 
+test_identifier3:  [ ,Inválido]
+
+O quarto teste testa uma cadeia de caracteres de tamanho 7
+
+test_identifier4:  [ABc678k,Inválido]
+
+O quinto teste testa se primeiro caractere é letra
+
+test_identifier5:  [z,Válido]
+
+O sexto teste testa se primeiro caractere é letra e falha
+
+test_identifier6:  [7,Inválido]
+
+O sétimo teste testa uma cadeia de caracteres de tamanho 6 com caracteres especiais
+
+test_identifier7:  [abc8-k,Inválido]
+
+O sétimo teste testa uma cadeia de caracteres de tamanho 9 com caracteres especiais
+
+test_identifier8:  [Ai088k-+p,Inválido]
 
 
 
