@@ -17,7 +17,7 @@ void tearDown(void)
 // testa valores limites dentro do range 1-6 e devem passar, testando a letra A
 void test_identifier1(void)
 {
-  char teste = 'A';
+  char teste ='A';
   
   valid_s(teste); // retorna 1
   
@@ -28,21 +28,24 @@ void test_identifier1(void)
 // testa valores limites dentro do range 1-6 e devem passar, testando a string D423rf
 void test_identifier2(void)
 {
-  char teste[6] = "D423rf";
+  char teste[] = "D423rf";
+  int ret = 0;
   
-  valid_f(teste); // retorna 1
-  
-  TEST_ASSERT_EQUAL(1, valid_f(teste));
-
+  for(int i =0;i<5;i++)
+  {
+	  ret =   valid_f(teste); // retorna 1
+	  TEST_ASSERT_EQUAL(1, ret);
+  }
+    
 }
 
 // testa valores limites fora do range 1-6 e  não devem passar, testando  ''
 void test_identifier3(void)
 {
-  char teste = " ";
+  char teste = ' ';
   
   valid_f(teste); // retorna 0
-  TEST_ASSERT_EQUAL(1, teste);
+  TEST_ASSERT_EQUAL(1, valid_f(teste));
 
 }
 
@@ -51,8 +54,13 @@ void test_identifier4(void)
 {
   char teste[] = "ABc678k";
   
-  valid_f(teste); // retorna 0
-  TEST_ASSERT_EQUAL(1, teste);
+  int ret = 0;
+  
+  for(int i =0;i<6;i++)
+  {
+	  ret = valid_f(teste); // retorna 0
+	  TEST_ASSERT_EQUAL(1, ret);
+  }
 
 }
 
@@ -62,14 +70,14 @@ void test_identifier5(void)
   char teste = 'z';
   
   valid_f(teste); // retorna 1
-  TEST_ASSERT_EQUAL(1, teste);
+  TEST_ASSERT_EQUAL(1, valid_s(teste));
 
 }
 
 // testa primeiro caracter como numero, deve falhar, testando '7'
 void test_identifier6(void)
 {
-  char teste = "7";
+  char teste = '7';
   
   valid_f(teste); //retorna 0
   TEST_ASSERT_EQUAL(1, teste);

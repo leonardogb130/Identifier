@@ -12,19 +12,11 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - gcc
-    - valgrind
-before_install:
-  # download riscv32 compiler
-  - chmod +x download-gdrive.sh
-  - ./download-gdrive.sh
-  - tar xvzf riscv-gcc.tar.gz --strip-components 2
-  - export PATH=$PWD/riscv-elf/gcc-8.1.0/bin:$PATH
 install:
 - "[ $GCC = gcc ] && export GCC=gcc || true"
 script:
-  - riscv32-unknown-elf-gcc
   - make
   - make test
-  - valgrind ./identifier
-  - gprof ./identifier > gprof.log
-  - head gprof.log -n 200
+  - clang -coverage identifier.c -o identifier
+  - ./identifier
+  - gcov identifier.c

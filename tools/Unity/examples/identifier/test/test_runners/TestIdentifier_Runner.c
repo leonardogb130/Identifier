@@ -6,6 +6,7 @@
   Unity.CurrentTestName = #TestFunc; \
   Unity.CurrentTestLineNumber = TestLineNum; \
   Unity.NumberOfTests++; \
+  UNITY_EXEC_TIME_START(); \
   if (TEST_PROTECT()) \
   { \
       setUp(); \
@@ -15,13 +16,18 @@
   { \
     tearDown(); \
   } \
+  UNITY_EXEC_TIME_STOP(); \
   UnityConcludeTest(); \
 }
 
 /*=======Automagically Detected Files To Include=====*/
+#define UNITY_INCLUDE_SETUP_STUBS
 #include "unity.h"
+#ifndef UNITY_EXCLUDE_SETJMP_H
 #include <setjmp.h>
+#endif
 #include <stdio.h>
+#include "stdio.h"
 #include "identifier.h"
 
 /*=======External Functions This Runner Calls=====*/
@@ -37,6 +43,24 @@ extern void test_identifier7(void);
 extern void test_identifier8(void);
 
 
+/*=======Suite Setup=====*/
+static void suite_setup(void)
+{
+#if defined(UNITY_WEAK_ATTRIBUTE) || defined(UNITY_WEAK_PRAGMA)
+  suiteSetUp();
+#endif
+}
+
+/*=======Suite Teardown=====*/
+static int suite_teardown(int num_failures)
+{
+#if defined(UNITY_WEAK_ATTRIBUTE) || defined(UNITY_WEAK_PRAGMA)
+  return suiteTearDown(num_failures);
+#else
+  return num_failures;
+#endif
+}
+
 /*=======Test Reset Option=====*/
 void resetTest(void);
 void resetTest(void)
@@ -49,15 +73,16 @@ void resetTest(void)
 /*=======MAIN=====*/
 int main(void)
 {
+  suite_setup();
   UnityBegin("test/TestIdentifier.c");
-  RUN_TEST(test_identifier1, 18); // testname + line number
-  RUN_TEST(test_identifier2, 28);
-  RUN_TEST(test_identifier3, 38);
-  RUN_TEST(test_identifier4, 48);
-  RUN_TEST(test_identifier5, 58);
-  RUN_TEST(test_identifier6, 68);
-  RUN_TEST(test_identifier7, 78);
-  RUN_TEST(test_identifier8, 89);
+  RUN_TEST(test_identifier1, 18);
+  RUN_TEST(test_identifier2, 29);
+  RUN_TEST(test_identifier3, 43);
+  RUN_TEST(test_identifier4, 53);
+  RUN_TEST(test_identifier5, 68);
+  RUN_TEST(test_identifier6, 78);
+  RUN_TEST(test_identifier7, 88);
+  RUN_TEST(test_identifier8, 99);
 
-  return (UnityEnd());
+  return suite_teardown(UnityEnd());
 }

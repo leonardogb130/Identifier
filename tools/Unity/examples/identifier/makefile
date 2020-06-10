@@ -44,31 +44,23 @@ CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 
 TARGET_BASE1=test_identifier
-#TARGET_BASE2=test2
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
-#TARGET2 = $(TARGET_BASE2)$(TARGET_EXTENSION)
 SRC_FILES1=$(UNITY_ROOT)/src/unity.c src/identifier.c  test/TestIdentifier.c  test/test_runners/TestIdentifier_Runner.c
-#SRC_FILES2=$(UNITY_ROOT)/src/unity.c src/ProductionCode2.c test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src
 SYMBOLS=
 
 all: clean default
 
-#default: $(SRC_FILES1) $(SRC_FILES2)
 default: $(SRC_FILES1)
 	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
-#	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -o $(TARGET2)
 	- ./$(TARGET1)
-#	./$(TARGET2)
 
-test/test_runners/TestFoo_Runner.c: test/TestIdentifier.c
+test/test_runners/TestIdentifier_Runner.c: test/TestIdentifier.c
 	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestIdentifier.c  test/test_runners/TestIdentifier_Runner.c
-#test/test_runners/TestProductionCode2_Runner.c: test/TestProductionCode2.c
-#	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
+
 
 clean:
 	$(CLEANUP) $(TARGET1)
-#	$(CLEANUP) $(TARGET1) $(TARGET2)
 
 ci: CFLAGS += -Werror
 ci: default
