@@ -25,6 +25,9 @@ https://github.com/leonardogb130/Identifier/issues/1#issue-635937268
  - Para  executar os testes, deve se primeiro ir na  pasta tools/Unity/examples/identifier
  
  - Após, executar o comando 'make' em um terminal e será exibido a lista dos testes realizados. 
+ 
+ ![resultados](https://user-images.githubusercontent.com/42787996/84230619-c729bc80-aac2-11ea-8458-20dc271c13c8.PNG)
+
 
 
 
