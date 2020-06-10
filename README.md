@@ -16,7 +16,7 @@ O trabalho consiste basicamente de a partir de um modelo de caso pronto, que pod
 ## Classes de Equivalência
 
 As classes de equivalência para o problema podem ser conferidas na figura abaixo:
-
+https://github.com/leonardogb130/Identifier/issues/1#issue-635937268
 
 
 ## Executando os testes
